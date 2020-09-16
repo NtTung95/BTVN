@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>laixuat</title>
+</head>
+<body>
+<script>
+    // 10 triệu sau 1 năm lãi 8%, hết 1 năm vốn + lãi sang kỳ tiếp. Sau n năm lãi bn tiền
+    // bài 2 dự đoán sau bao nhiêu năm số tiền hơn  n triệu.
+    let year = parseFloat(prompt("Nhập số năm gửi"));
+    let money = parseFloat(prompt("Nhập số tiền gửi vào (VNĐ)"));
+    let maxMoney = parseFloat(prompt("nhập mức tiền muốn nhận"));
+    let sum = 0
+    let count = 0
+    document.write("Gửi " + money + " vào thì:<br/>");
+    while (count < year) {
+        interest = money*1.08;
+        sum = sum + interest;
+        money = interest;
+        count++;
+    }
+    document.write("Sau " + year + " năm thu đc " + sum + "VNĐ<br/>");
+
+    if (money>maxMoney){
+        document.write("thừa tiền r đừng gửi");
+    } else {
+        while (year<1000) {
+            interest = money*1.08;
+            sum = sum + interest;
+            money = interest;
+            if (sum>maxMoney) {
+                document.write("Muốn nhận đc " + maxMoney + "VNĐ thì phải chờ " + (year+1) + " năm");
+                break;
+            }
+            year++;
+        }
+    }
+
+</script>
+</body>
+</html>
